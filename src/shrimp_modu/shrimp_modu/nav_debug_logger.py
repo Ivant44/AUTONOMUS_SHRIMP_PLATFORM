@@ -44,6 +44,7 @@ class NavDebugLogger(Node):
         self.declare_parameter('omega_deadband', 1.0e-4)
         self.declare_parameter('min_steering_speed', 0.01)
         self.declare_parameter('min_steering_angle', 0.0)
+        self.declare_parameter('odom_topic', '/odom')
 
         self.log_period = self.get_parameter('log_period').value
         self.goal_timeout = self.get_parameter('goal_timeout').value
@@ -54,6 +55,7 @@ class NavDebugLogger(Node):
         self.omega_deadband = self.get_parameter('omega_deadband').value
         self.min_steering_speed = self.get_parameter('min_steering_speed').value
         self.min_steering_angle = self.get_parameter('min_steering_angle').value
+        self.odom_topic = self.get_parameter('odom_topic').value
 
         self.goal = None
         self.goal_time = 0.0
@@ -69,7 +71,7 @@ class NavDebugLogger(Node):
             self.goal_cb,
             10,
         )
-        self.create_subscription(Odometry, '/odom', self.odom_cb, 20)
+        self.create_subscription(Odometry, self.odom_topic, self.odom_cb, 20)
         self.create_subscription(Twist, '/cmd_vel_nav', self.cmd_nav_cb, 20)
         self.create_subscription(Twist, '/cmd_vel', self.cmd_smoothed_cb, 20)
         self.create_subscription(
@@ -85,7 +87,9 @@ class NavDebugLogger(Node):
             20,
         )
         self.create_timer(self.log_period, self.log_state)
-        self.get_logger().info("Nav debug logger listo")
+        self.get_logger().info(
+            f"Nav debug logger listo, odom_topic={self.odom_topic}"
+        )
 
     def goal_cb(self, msg):
         self.goal = msg

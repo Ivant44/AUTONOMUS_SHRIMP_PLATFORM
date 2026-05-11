@@ -19,6 +19,8 @@ def generate_launch_description():
     log_level = LaunchConfiguration('log_level')
 
     default_params_file = os.path.join(pkg, 'config', 'nav2_params.yaml')
+    default_ekf_params_file = os.path.join(pkg, 'config', 'ekf.yaml')
+    ekf_params_file = LaunchConfiguration('ekf_params_file')
 
     lifecycle_nodes = [
         'controller_server',
@@ -83,7 +85,31 @@ def generate_launch_description():
             'output_odom_topic': '/odom',
             'odom_frame': 'odom',
             'base_frame': 'base_footprint',
+            'publish_tf': False,
+            'override_covariance': True,
+            'pose_covariance_diagonal': [
+                0.0025, 0.0025, 1000000.0,
+                1000000.0, 1000000.0, 0.0009,
+            ],
+            'twist_covariance_diagonal': [
+                0.0004, 0.01, 1000000.0,
+                1000000.0, 1000000.0, 0.0009,
+            ],
         }],
+    )
+
+    ekf_node = Node(
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_filter_node',
+        output='screen',
+        parameters=[
+            ekf_params_file,
+            {'use_sim_time': use_sim_time},
+        ],
+        remappings=remappings + [
+            ('odometry/filtered', '/odometry/filtered'),
+        ],
     )
 
     map_to_odom_tf = Node(
@@ -126,6 +152,25 @@ def generate_launch_description():
             'omega_deadband': 0.001,
             'min_steering_speed': 0.002,
             'min_steering_angle': 0.035,
+            'odom_topic': '/odometry/filtered',
+        }],
+    )
+
+    nav_metrics_logger = Node(
+        package='shrimp_modu',
+        executable='nav_metrics_logger',
+        name='nav_metrics_logger',
+        output='screen',
+        parameters=[{
+            'odom_topic': '/odometry/filtered',
+            'goal_topic': '/navigate_to_pose_approach/current_goal',
+            'cmd_nav_topic': '/cmd_vel_nav',
+            'cmd_exec_topic': '/cmd_vel',
+            'wheel_commands_topic': '/wheel_controller/commands',
+            'steering_commands_topic': '/steering_controller/commands',
+            'publish_period': 0.1,
+            'max_path_length': 5000,
+            'csv_enabled': True,
         }],
     )
 
@@ -240,14 +285,21 @@ def generate_launch_description():
             description='Archivo de parametros para Nav2'
         ),
         DeclareLaunchArgument(
+            'ekf_params_file',
+            default_value=default_ekf_params_file,
+            description='Archivo de parametros para robot_localization EKF'
+        ),
+        DeclareLaunchArgument(
             'log_level',
             default_value='info',
             description='Nivel de logging de Nav2'
         ),
         map_to_odom_tf,
         odom_tf_node,
+        ekf_node,
         navigate_to_pose_approach,
         nav_debug_logger,
+        nav_metrics_logger,
         controller_server,
         smoother_server,
         planner_server,

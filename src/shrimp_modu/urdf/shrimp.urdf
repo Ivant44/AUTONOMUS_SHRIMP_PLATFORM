@@ -33,6 +33,60 @@
     </geometry>
   </collision>
 </link>
+
+<link name="camera_link">
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.08 0.16 0.05"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.08 0.16 0.05"/>
+    </geometry>
+  </collision>
+</link>
+
+  <joint name="base_footprint_to_camera_link" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="camera_link"/>
+    <origin xyz="0.02 0 0.30" rpy="0 0 0"/>
+  </joint>
+
+<link name="left_camera_frame"/>
+
+<joint name="camera_link_to_left_camera_frame" type="fixed">
+  <parent link="camera_link"/>
+  <child link="left_camera_frame"/>
+  <origin xyz="0 0.035 0" rpy="0 0 0"/>
+</joint>
+
+<link name="left_camera_optical_frame"/>
+
+<joint name="left_camera_frame_to_left_camera_optical_frame" type="fixed">
+  <parent link="left_camera_frame"/>
+  <child link="left_camera_optical_frame"/>
+  <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+</joint>
+
+<link name="right_camera_frame"/>
+
+<joint name="camera_link_to_right_camera_frame" type="fixed">
+  <parent link="camera_link"/>
+  <child link="right_camera_frame"/>
+  <origin xyz="0 -0.035 0" rpy="0 0 0"/>
+</joint>
+
+<link name="right_camera_optical_frame"/>
+
+<joint name="right_camera_frame_to_right_camera_optical_frame" type="fixed">
+  <parent link="right_camera_frame"/>
+  <child link="right_camera_optical_frame"/>
+  <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+</joint>
   
 <link name="base_link1steering_link1">
   <inertial>
@@ -475,6 +529,41 @@
     <rpy_offset>0 0 0</rpy_offset>
     <gaussian_noise>0.0</gaussian_noise>
   </plugin>
+</gazebo>
+
+<gazebo reference="camera_link">
+  <sensor name="left_depth_camera" type="depth">
+    <always_on>true</always_on>
+    <update_rate>15</update_rate>
+    <visualize>true</visualize>
+    <pose>0 0.035 0 0 0 0</pose>
+    <camera>
+      <horizontal_fov>1.3962634</horizontal_fov>
+      <image>
+        <width>424</width>
+        <height>240</height>
+        <format>B8G8R8</format>
+      </image>
+      <depth_camera>
+      </depth_camera>
+      <clip>
+        <near>0.15</near>
+        <far>5.0</far>
+      </clip>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.003</stddev>
+      </noise>
+    </camera>
+    <plugin name="left_depth_camera_controller" filename="libgazebo_ros_camera.so">
+      <camera_name>stereo</camera_name>
+      <frame_name>left_camera_optical_frame</frame_name>
+      <hack_baseline>0.07</hack_baseline>
+      <min_depth>0.15</min_depth>
+      <max_depth>5.0</max_depth>
+    </plugin>
+  </sensor>
 </gazebo>
 
 <gazebo>

@@ -62,7 +62,8 @@ def generate_launch_description():
         arguments=[
             '-entity', 'shrimp',
             '-topic', 'robot_description',
-            '-z', '0.2'
+            '-z', '0.2',
+            '-timeout', '120.0'
         ],
         output='screen'
     )

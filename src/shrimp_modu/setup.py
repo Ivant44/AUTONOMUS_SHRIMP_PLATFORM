@@ -34,6 +34,7 @@ setup(
             'odom_tf_node = shrimp_modu.odom_tf_node:main',
             'navigate_to_pose_approach = shrimp_modu.navigate_to_pose_approach:main',
             'nav_debug_logger = shrimp_modu.nav_debug_logger:main',
+            'nav_metrics_logger = shrimp_modu.nav_metrics_logger:main',
         ],
     },
 )
