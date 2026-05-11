@@ -21,8 +21,8 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='legacy',
-    maintainer_email='email@email.com',
-    description='Muestra un robot en ros2',
+    maintainer_email='ivan.torres.ortiz4487@gmail.com',
+    description='SHRIMP MODU ROS2 PACKAGE',
     license='Apache License 2.0',
     tests_require=['pytest'],
     entry_points={
