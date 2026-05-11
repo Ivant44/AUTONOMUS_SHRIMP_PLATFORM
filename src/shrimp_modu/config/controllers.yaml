@@ -1,0 +1,36 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    wheel_controller:
+      type: forward_command_controller/ForwardCommandController
+
+    steering_controller:
+      type: forward_command_controller/ForwardCommandController
+
+# =========================
+# RUEDAS (VELOCIDAD)
+# =========================
+wheel_controller:
+  ros__parameters:
+    joints:
+      - base_link1_rear_right_wheel_base_link_joint
+      - base_link1_rear_left_wheel_base_link_joint
+      - base_link1_front_right_wheel_base_link_joint
+      - base_link1_front_left_wheel_base_link_joint
+
+    interface_name: velocity
+
+# =========================
+# DIRECCIÓN (POSICIÓN)
+# =========================
+steering_controller:
+  ros__parameters:
+    joints:
+      - base_link1_steering_front_joint
+      - base_link1_steering_back_joint
+
+    interface_name: position

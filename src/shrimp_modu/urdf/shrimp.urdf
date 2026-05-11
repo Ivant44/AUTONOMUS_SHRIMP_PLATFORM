@@ -1,0 +1,493 @@
+<?xml version="1.0" ?>
+<robot name="SHRIM_MECHANICAL_BACKUP">
+
+<material name="silver">
+  <color rgba="0.700 0.700 0.700 1.000"/>
+</material>
+
+<link name="base_footprint"/>
+
+<joint name="base_footprint_to_base_link" type="fixed">
+  <parent link="base_footprint"/>
+  <child link="base_link"/>
+  <origin xyz="0 0 0" rpy="0 0 1.57079632679"/>
+</joint>
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.0176847751641402 0.00229090870237322 0.05599845057809939" rpy="0 0 0"/>
+    <mass value="38.09333724864147"/>
+    <inertia ixx="0.7492582184178012" iyy="0.9519457840083874" izz="1.3350272647734087" ixy="-0.05331941683438979" iyz="0.013669358896541806" ixz="0.03806289907793825"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.479998 0.122814 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shrimp_modu/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.029998 0.002814 0.12" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.3 0.2 0.05"/> 
+    </geometry>
+  </collision>
+</link>
+  
+<link name="base_link1steering_link1">
+  <inertial>
+    <origin xyz="0.002194868238111991 0.0005061677799256814 -0.0707339403330228" rpy="0 0 0"/>
+    <mass value="4.457265805320285"/>
+    <inertia ixx="0.009395702554931329" iyy="0.006553865002069115" izz="0.005176275252156026" ixy="-0.00031045229105475247" iyz="1.0887867375387883e-05" ixz="4.7180143694258714e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.479998 0.312814 -0.098158" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shrimp_modu/meshes/base_link1steering_link1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!--
+  <collision>
+    <origin xyz="0.479998 0.312814 -0.098158" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shrimp_modu/meshes/base_link1steering_link1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+  -->
+</link>
+<!--
+<link name="base_link1rear_left_wheel1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="4.038573624524774"/>
+    <inertia ixx="0.008052263449310162" iyy="0.004843717891383825" izz="0.004843717891341637" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.658498 0.045778 0.055" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shrimp_modu/meshes/base_link1rear_left_wheel1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+   <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+   <geometry>
+    <cylinder radius="0.055" length="0.04"/>
+   </geometry>
+  </collision>
+</link>
+-->
+<link name="base_link1rear_left_wheel1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="4.0385"/>
+    <inertia ixx="0.00805" iyy="0.00484" izz="0.00484" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  
+  <visual>
+    <origin xyz="0 0 0" rpy="0 1.5707 0"/> 
+    <geometry>
+      <cylinder radius="0.055" length="0.04"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  
+  <collision>
+    <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+    <geometry>
+      <cylinder radius="0.055" length="0.04"/>
+    </geometry>
+  </collision>
+</link>
+<!--
+<link name="base_link1front_left_wheel1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="4.0385736245247745"/>
+    <inertia ixx="0.008052263449332325" iyy="0.004843717891371835" izz="0.004843717891406474" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.658498 0.220778 0.055" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shrimp_modu/meshes/base_link1front_left_wheel1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+   <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+   <geometry>
+    <cylinder radius="0.055" length="0.04"/>
+   </geometry>
+  </collision>
+</link>
+-->
+<link name="base_link1front_left_wheel1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="4.0385"/>
+    <inertia ixx="0.00805" iyy="0.00484" izz="0.00484" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  
+  <visual>
+    <origin xyz="0 0 0" rpy="0 1.5707 0"/> 
+    <geometry>
+      <cylinder radius="0.055" length="0.04"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  
+  <collision>
+    <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+    <geometry>
+      <cylinder radius="0.055" length="0.04"/>
+    </geometry>
+  </collision>
+</link>
+<!--
+<link name="base_link1front_right_wheel1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="4.038573624524768"/>
+    <inertia ixx="0.00805226344931892" iyy="0.004843717891439003" izz="0.0048437178914495505" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.300305 0.220798 0.055" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shrimp_modu/meshes/base_link1front_right_wheel1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+   <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+   <geometry>
+    <cylinder radius="0.055" length="0.04"/>
+   </geometry>
+ </collision>
+</link>
+-->
+<link name="base_link1front_right_wheel1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="4.0385"/>
+    <inertia ixx="0.00805" iyy="0.00484" izz="0.00484" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  
+  <visual>
+    <origin xyz="0 0 0" rpy="0 1.5707 0"/> 
+    <geometry>
+      <cylinder radius="0.055" length="0.04"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  
+  <collision>
+    <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+    <geometry>
+      <cylinder radius="0.055" length="0.04"/>
+    </geometry>
+  </collision>
+</link>
+<!--
+<link name="base_link1rear_right_wheel1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="4.038573624524772"/>
+    <inertia ixx="0.008052263449304929" iyy="0.0048437178914323975" izz="0.004843717891439225" ixy="" iyz="0" ixz="0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.300245 0.045778 0.055" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shrimp_modu/meshes/base_link1rear_right_wheel1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+   <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+   <geometry>
+    <cylinder radius="0.055" length="0.04"/>
+   </geometry>
+  </collision>
+</link>
+-->
+<link name="base_link1rear_right_wheel1">
+  <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <mass value="4.0385"/>
+    <inertia ixx="0.00805" iyy="0.00484" izz="0.00484" ixy="0" iyz="0" ixz="0"/>
+  </inertial>
+  
+  <visual>
+    <origin xyz="0 0 0" rpy="0 1.5707 0"/> 
+    <geometry>
+      <cylinder radius="0.055" length="0.04"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  
+  <collision>
+    <origin xyz="0 0 0" rpy="0 1.5707 0"/>
+    <geometry>
+      <cylinder radius="0.055" length="0.04"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="base_link1steering_link21">
+  <inertial>
+    <origin xyz="-0.0008508055263453662 7.652312068723299e-05 -0.08097309683513666" rpy="0 0 0"/>
+    <mass value="4.462686429067662"/>
+    <inertia ixx="0.009364051738233653" iyy="0.006526362898680915" izz="0.005181843353736726" ixy="0.0003067971043931583" iyz="1.6241652035040716e-06" ixz="-1.80196688353354e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.479998 -0.067186 -0.108158" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shrimp_modu/meshes/base_link1steering_link21.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <!--
+  <collision>
+    <origin xyz="0.479998 -0.067186 -0.108158" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shrimp_modu/meshes/base_link1steering_link21.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+  -->
+</link>
+<link name="base_link1steering_link1front_wheel1">
+  <inertial>
+    <origin xyz="-0.0030936035759338565 0.0003317342201268336 2.992209879454366e-07" rpy="0 0 0"/>
+    <mass value="4.038573624528018"/>
+    <inertia ixx="0.0080158628152735" iyy="0.004880118453749249" izz="0.004843717676211723" ixy="-0.00033980528040744584" iyz="6.855569584240939e-11" ixz="7.618669584097404e-12"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.474575 0.312581 -0.022602" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shrimp_modu/meshes/base_link1steering_link1front_wheel1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 1.5707 0"/> <geometry>
+      <cylinder radius="0.055" length="0.04"/>
+    </geometry>
+  </collision>
+</link>
+  
+<link name="base_link1steering_link21back_wheel1">
+  <inertial>
+    <origin xyz="0.004547870918976515 0.00048631053112914435 -3.8354415499153305e-07" rpy="0 0 0"/>
+    <mass value="4.038573624524766"/>
+    <inertia ixx="0.008015977230669234" iyy="0.004880004110082492" izz="0.0048437178914398915" ixy="0.00033927760897881076" iyz="-1.1752751549742868e-15" ixz="-5.898059818321144e-16"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.485347 -0.0668 -0.022445" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://shrimp_modu/meshes/base_link1steering_link21back_wheel1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 1.5707 0"/> <geometry>
+      <cylinder radius="0.055" length="0.04"/>
+    </geometry>
+  </collision>
+</link>
+   
+<joint name="base_link1_steering_front_joint" type="continuous">
+  <origin xyz="0 -0.19 0.098158" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="base_link1steering_link1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="base_link1_rear_left_wheel_base_link_joint" type="continuous">
+  <origin xyz="-0.1785 0.077036 0.021662" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="base_link1rear_left_wheel1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="base_link1_front_left_wheel_base_link_joint" type="continuous">
+  <origin xyz="-0.1785 -0.097964 0.021662" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="base_link1front_left_wheel1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
+</joint>
+
+<joint name="base_link1_front_right_wheel_base_link_joint" type="continuous">
+  <origin xyz="0.179693 -0.097984 0.021662" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="base_link1front_right_wheel1"/>
+  <axis xyz="1.0 -0.0 0.0"/>
+</joint>
+
+<joint name="base_link1_rear_right_wheel_base_link_joint" type="continuous">
+  <origin xyz="0.179753 0.077036 0.021662" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="base_link1rear_right_wheel1"/>
+  <axis xyz="1.0 -0.0 0.0"/>
+</joint>
+
+<joint name="base_link1_steering_back_joint" type="continuous">
+  <origin xyz="0 0.19 0.108158" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="base_link1steering_link21"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="base_link1steering_link1_Revolucion_2" type="continuous">
+  <origin xyz="0.005423 0.000233 -0.075556" rpy="0 0 0"/>
+  <parent link="base_link1steering_link1"/>
+  <child link="base_link1steering_link1front_wheel1"/>
+  <axis xyz="-1 0 0"/>
+</joint>
+
+<joint name="base_link1steering_link21_Revolucion_2" type="continuous">
+  <origin xyz="-0.005349 -0.000386 -0.085713" rpy="0 0 0"/>
+  <parent link="base_link1steering_link21"/>
+  <child link="base_link1steering_link21back_wheel1"/>
+  <axis xyz="1 0 0"/>
+</joint>
+
+<ros2_control name="ShrimpSystem" type="system">
+  <hardware>
+    <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+  </hardware>
+
+  <!-- RUEDAS DE TRACCIÓN (velocity) -->
+  <joint name="base_link1_rear_left_wheel_base_link_joint">
+    <command_interface name="velocity"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="base_link1_rear_right_wheel_base_link_joint">
+    <command_interface name="velocity"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="base_link1_front_left_wheel_base_link_joint">
+    <command_interface name="velocity"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="base_link1_front_right_wheel_base_link_joint">
+    <command_interface name="velocity"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <!-- STEERING (position) -->
+  <joint name="base_link1_steering_front_joint">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+  </joint>
+
+  <joint name="base_link1_steering_back_joint">
+    <command_interface name="position"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+  </joint>
+
+  <!-- RUEDAS DIRECCIONALES PASIVAS (velocity) -->
+  <!-- NO se controlan activamente, pero necesitan interfaces para publicación de estados -->
+  <joint name="base_link1steering_link1_Revolucion_2">
+    <command_interface name="velocity"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="base_link1steering_link21_Revolucion_2">
+    <command_interface name="velocity"/>
+    <state_interface name="position">
+      <param name="initial_value">0.0</param>
+    </state_interface>
+    <state_interface name="velocity"/>
+  </joint>
+
+</ros2_control>
+
+<!-- REAR LEFT -->
+
+<gazebo reference="base_link1rear_left_wheel1">
+  <mu1>200.0</mu1>
+  <mu2>200.0</mu2>
+  <kp>1000000.0</kp>
+  <kd>1.0</kd>
+  <minDepth>0.001</minDepth>
+</gazebo>
+
+<gazebo reference="base_link1rear_right_wheel1">
+  <mu1>200.0</mu1>
+  <mu2>200.0</mu2>
+  <kp>1000000.0</kp>
+  <kd>1.0</kd>
+  <minDepth>0.001</minDepth>
+</gazebo>
+
+<gazebo reference="base_link1front_left_wheel1">
+  <mu1>200.0</mu1>
+  <mu2>200.0</mu2>
+  <kp>1000000.0</kp>
+  <kd>1.0</kd>
+  <minDepth>0.001</minDepth>
+</gazebo>
+
+<gazebo reference="base_link1front_right_wheel1">
+  <mu1>200.0</mu1>
+  <mu2>200.0</mu2>
+  <kp>1000000.0</kp>
+  <kd>1.0</kd>
+  <minDepth>0.001</minDepth>
+</gazebo>
+
+<gazebo>
+  <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+    <parameters>/home/ivan/ros2_ws/src/shrimp_modu/config/controllers.yaml</parameters>
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="ground_truth_p3d" filename="libgazebo_ros_p3d.so">
+    <ros>
+      <remapping>odom:=/odom_custom</remapping>
+    </ros>
+    <body_name>base_footprint</body_name>
+    <update_rate>50.0</update_rate>
+    <xyz_offset>0 0 0</xyz_offset>
+    <rpy_offset>0 0 0</rpy_offset>
+    <gaussian_noise>0.0</gaussian_noise>
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <ode>
+    <solver>
+      <type>quick</type>
+      <iters>50</iters>
+    </solver>
+    <constraints>
+      <cfm>0.0001</cfm>
+      <erp>0.2</erp>
+    </constraints>
+  </ode>
+</gazebo>
+
+</robot>

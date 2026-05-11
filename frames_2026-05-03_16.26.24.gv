@@ -1,0 +1,8 @@
+digraph G {
+"base_link" -> "base_link1steering_link21"[label=" Broadcaster: default_authority\nAverage rate: 20.202\nBuffer length: 4.95\nMost recent transform: 6243.199\nOldest transform: 6238.249\n"];
+"base_link" -> "base_link1steering_link1"[label=" Broadcaster: default_authority\nAverage rate: 20.202\nBuffer length: 4.95\nMost recent transform: 6243.199\nOldest transform: 6238.249\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1777847184.7242706"[ shape=plaintext ] ;
+}->"base_link";
+}
